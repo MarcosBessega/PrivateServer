@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset><contributor><author></author><authoring_tool>FBX COLLADA exporter</authoring_tool><comments></comments></contributor><created>2016-05-28T21:17:18Z</created><keywords></keywords><modified>2016-05-28T21:17:18Z</modified><revision></revision><subject></subject><title></title><unit meter="0.010000" name="centimeter"></unit><up_axis>Z_UP</up_axis></asset>
+  <library_geometries>
+    <geometry id="-lib" name="Mesh">
+      <mesh>
+        <source id="-POSITION">
+          <float_array id="-POSITION-array" count="12">
+3174.109131 5836.194824 0.000000
+3174.109131 5836.194824 -500.000000
+3174.109131 7248.194336 0.000000
+3174.109131 7248.194336 -500.000000
+</float_array>
+          <technique_common>
+            <accessor source="#-POSITION-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="-Normal0">
+          <float_array id="-Normal0-array" count="12">
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+</float_array>
+          <technique_common>
+            <accessor source="#-Normal0-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="-VERTEX">
+          <input semantic="POSITION" source="#-POSITION"/>
+          <input semantic="NORMAL" source="#-Normal0"/>
+        </vertices>
+        <triangles count="2"><input semantic="VERTEX" offset="0" source="#-VERTEX"/><p> 0 1 2 2 1 3</p></triangles>
+      </mesh>
+    </geometry>
+    <geometry id="_ncl1_1-lib" name="_ncl1_1Mesh">
+      <mesh>
+        <source id="_ncl1_1-POSITION">
+          <float_array id="_ncl1_1-POSITION-array" count="12">
+1572.109131 5836.194824 0.000000
+1572.109131 5836.194824 -500.000000
+3174.109131 5836.194824 0.000000
+3174.109131 5836.194824 -500.000000
+</float_array>
+          <technique_common>
+            <accessor source="#_ncl1_1-POSITION-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="_ncl1_1-Normal0">
+          <float_array id="_ncl1_1-Normal0-array" count="12">
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+</float_array>
+          <technique_common>
+            <accessor source="#_ncl1_1-Normal0-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="_ncl1_1-VERTEX">
+          <input semantic="POSITION" source="#_ncl1_1-POSITION"/>
+          <input semantic="NORMAL" source="#_ncl1_1-Normal0"/>
+        </vertices>
+        <triangles count="2"><input semantic="VERTEX" offset="0" source="#_ncl1_1-VERTEX"/><p> 0 1 2 2 1 3</p></triangles>
+      </mesh>
+    </geometry>
+    <geometry id="_ncl1_2-lib" name="_ncl1_2Mesh">
+      <mesh>
+        <source id="_ncl1_2-POSITION">
+          <float_array id="_ncl1_2-POSITION-array" count="12">
+1572.109131 7248.194336 0.000000
+1572.109131 7248.194336 -500.000000
+1572.109131 5836.194824 0.000000
+1572.109131 5836.194824 -500.000000
+</float_array>
+          <technique_common>
+            <accessor source="#_ncl1_2-POSITION-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="_ncl1_2-Normal0">
+          <float_array id="_ncl1_2-Normal0-array" count="12">
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+</float_array>
+          <technique_common>
+            <accessor source="#_ncl1_2-Normal0-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="_ncl1_2-VERTEX">
+          <input semantic="POSITION" source="#_ncl1_2-POSITION"/>
+          <input semantic="NORMAL" source="#_ncl1_2-Normal0"/>
+        </vertices>
+        <triangles count="2"><input semantic="VERTEX" offset="0" source="#_ncl1_2-VERTEX"/><p> 0 1 2 2 1 3</p></triangles>
+      </mesh>
+    </geometry>
+    <geometry id="_ncl1_3-lib" name="_ncl1_3Mesh">
+      <mesh>
+        <source id="_ncl1_3-POSITION">
+          <float_array id="_ncl1_3-POSITION-array" count="12">
+3174.109131 7248.194336 0.000000
+3174.109131 7248.194336 -500.000000
+1572.109131 7248.194336 0.000000
+1572.109131 7248.194336 -500.000000
+</float_array>
+          <technique_common>
+            <accessor source="#_ncl1_3-POSITION-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="_ncl1_3-Normal0">
+          <float_array id="_ncl1_3-Normal0-array" count="12">
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+</float_array>
+          <technique_common>
+            <accessor source="#_ncl1_3-Normal0-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="_ncl1_3-VERTEX">
+          <input semantic="POSITION" source="#_ncl1_3-POSITION"/>
+          <input semantic="NORMAL" source="#_ncl1_3-Normal0"/>
+        </vertices>
+        <triangles count="2"><input semantic="VERTEX" offset="0" source="#_ncl1_3-VERTEX"/><p> 0 1 2 2 1 3</p></triangles>
+      </mesh>
+    </geometry>
+    <geometry id="_ncl1_4-lib" name="_ncl1_4Mesh">
+      <mesh>
+        <source id="_ncl1_4-POSITION">
+          <float_array id="_ncl1_4-POSITION-array" count="12">
+3174.109131 7248.194336 0.000000
+1572.109131 7248.194336 0.000000
+3174.109131 5836.194824 0.000000
+1572.109131 5836.194824 0.000000
+</float_array>
+          <technique_common>
+            <accessor source="#_ncl1_4-POSITION-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="_ncl1_4-Normal0">
+          <float_array id="_ncl1_4-Normal0-array" count="12">
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#_ncl1_4-Normal0-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="_ncl1_4-VERTEX">
+          <input semantic="POSITION" source="#_ncl1_4-POSITION"/>
+          <input semantic="NORMAL" source="#_ncl1_4-Normal0"/>
+        </vertices>
+        <triangles count="2"><input semantic="VERTEX" offset="0" source="#_ncl1_4-VERTEX"/><p> 0 1 2 2 1 3</p></triangles>
+      </mesh>
+    </geometry>
+    <geometry id="_ncl1_5-lib" name="_ncl1_5Mesh">
+      <mesh>
+        <source id="_ncl1_5-POSITION">
+          <float_array id="_ncl1_5-POSITION-array" count="12">
+1572.109131 7248.194336 -500.000000
+3174.109131 7248.194336 -500.000000
+1572.109131 5836.194824 -500.000000
+3174.109131 5836.194824 -500.000000
+</float_array>
+          <technique_common>
+            <accessor source="#_ncl1_5-POSITION-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="_ncl1_5-Normal0">
+          <float_array id="_ncl1_5-Normal0-array" count="12">
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#_ncl1_5-Normal0-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="_ncl1_5-VERTEX">
+          <input semantic="POSITION" source="#_ncl1_5-POSITION"/>
+          <input semantic="NORMAL" source="#_ncl1_5-Normal0"/>
+        </vertices>
+        <triangles count="2"><input semantic="VERTEX" offset="0" source="#_ncl1_5-VERTEX"/><p> 0 1 2 2 1 3</p></triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="" name="">
+      <node name="" id="" sid=""><matrix sid="matrix">1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000</matrix><instance_geometry url="#-lib"/><extra><technique profile="FCOLLADA"><visibility>1.000000</visibility></technique></extra></node>
+      <node name="_ncl1_1" id="_ncl1_1" sid="_ncl1_1"><matrix sid="matrix">1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000</matrix><instance_geometry url="#_ncl1_1-lib"/><extra><technique profile="FCOLLADA"><visibility>1.000000</visibility></technique></extra></node>
+      <node name="_ncl1_2" id="_ncl1_2" sid="_ncl1_2"><matrix sid="matrix">1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000</matrix><instance_geometry url="#_ncl1_2-lib"/><extra><technique profile="FCOLLADA"><visibility>1.000000</visibility></technique></extra></node>
+      <node name="_ncl1_3" id="_ncl1_3" sid="_ncl1_3"><matrix sid="matrix">1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000</matrix><instance_geometry url="#_ncl1_3-lib"/><extra><technique profile="FCOLLADA"><visibility>1.000000</visibility></technique></extra></node>
+      <node name="_ncl1_4" id="_ncl1_4" sid="_ncl1_4"><matrix sid="matrix">1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000</matrix><instance_geometry url="#_ncl1_4-lib"/><extra><technique profile="FCOLLADA"><visibility>1.000000</visibility></technique></extra></node>
+      <node name="_ncl1_5" id="_ncl1_5" sid="_ncl1_5"><matrix sid="matrix">1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000</matrix><instance_geometry url="#_ncl1_5-lib"/><extra><technique profile="FCOLLADA"><visibility>1.000000</visibility></technique></extra></node>
+      <extra><technique profile="MAX3D"><frame_rate>30.000000</frame_rate></technique><technique profile="FCOLLADA"><start_time>0.000000</start_time><end_time>1.000000</end_time></technique></extra>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#"></instance_visual_scene>
+  </scene>
+</COLLADA>

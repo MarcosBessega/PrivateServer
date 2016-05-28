@@ -1,0 +1,19 @@
+{
+  "name": "testes",
+  "version": "1.0.0",
+  "description": "testes",
+  "main": "index.html",
+  "scripts": {
+    "test": "karma start"
+  },
+  "author": "me",
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.77.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.1",
+    "jshint": "^2.9.2"
+  }
+}
