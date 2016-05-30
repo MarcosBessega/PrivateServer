@@ -28,17 +28,17 @@
 	</head>
 	<body>
 		<div id="info">
-			<a href="http://threejs.org" target="_blank">three.js</a> -
-			monster by <a href="http://www.3drt.com/downloads.htm" target="_blank">3drt</a>
+
 		</div>
 
+
 		<script src="../build/three.js"></script>
-		<script src="js/loaders/collada/Animation.js"></script>
-		<script src="js/loaders/collada/AnimationHandler.js"></script>
-		<script src="js/loaders/collada/KeyFrameAnimation.js"></script>
+
 
 		<script src="js/loaders/ColladaLoader.js"></script>
-
+		<script src="js/loaders/OBJLoader.js"></script>
+		<script src="js/controls/OrbitControls.js"></script>
+		<script src="js/renderers/Projector.js"></script>
 		<script src="js/Detector.js"></script>
 		<script src="js/libs/stats.min.js"></script>
 
@@ -49,27 +49,31 @@
 			var container, stats;
 
 			var camera, scene, renderer, objects;
-			var particleLight;
+			var light;
 			var dae;
+			var clickInfo = {
+			  x: 0,
+			  y: 0,
+			  userHasClicked: false
+			};
+
+		    var raycaster = new THREE.Raycaster();
+			var projector = new THREE.Projector();
+			var directionVector = new THREE.Vector3();
+
+			var SCREEN_HEIGHT = window.innerHeight;
+			var SCREEN_WIDTH = window.innerWidth;
 
 			var loader = new THREE.ColladaLoader();
 			loader.options.convertUpAxis = true;
 			loader.load( 'teste.dae', function ( collada ) {
 
 				dae = collada.scene;
+				dae.name = 'dae';
+				dae.position.x = -3;
+				dae.position.z = 6;
 
-				dae.traverse( function ( child ) {
 
-					if ( child instanceof THREE.SkinnedMesh ) {
-
-						var animation = new THREE.Animation( child, child.geometry.animation );
-						animation.play();
-
-					}
-
-				} );
-
-				// dae.scale.x = dae.scale.y = dae.scale.z = 0.002;
 				dae.updateMatrix();
 				init();
 				animate();
@@ -78,6 +82,18 @@
 
 			} );
 
+		// 	var loader = new THREE.OBJLoader();
+		// 	loader.load('teste.obj',function ( object ) {
+		// 		dae = object;
+		// 	}
+		// );
+
+
+			
+
+			
+
+
 
 			function init() {
 
@@ -85,9 +101,11 @@
 				document.body.appendChild( container );
 
 				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
-				camera.position.set( 0, 0, 0 );
+				camera.position.set( 0, 0, 10 );
 
 				scene = new THREE.Scene();
+
+				
 
 				// Grid
 
@@ -107,28 +125,13 @@
 				}
 
 				var line = new THREE.LineSegments( geometry, material );
-				scene.add( line );
+				// scene.add( line );
 
 				// Add the COLLADA
-				setMaterial(dae, new THREE.MeshBasicMaterial({color: 0x2C9109}));
+				setMaterial(dae);
 				scene.add( dae );
 
-				particleLight = new THREE.Mesh( new THREE.SphereGeometry( 4, 8, 8 ), new THREE.MeshBasicMaterial( { color: 0xffffff } ) );
-				scene.add( particleLight );
 
-				// Lights
-
-				scene.add( new THREE.AmbientLight( 0xcccccc ) );
-
-				var directionalLight = new THREE.DirectionalLight(/*Math.random() * 0xffffff*/0xeeeeee );
-				directionalLight.position.x = Math.random() - 0.5;
-				directionalLight.position.y = Math.random() - 0.5;
-				directionalLight.position.z = Math.random() - 0.5;
-				directionalLight.position.normalize();
-				scene.add( directionalLight );
-
-				var pointLight = new THREE.PointLight( 0xffffff, 4 );
-				particleLight.add( pointLight );
 
 				renderer = new THREE.WebGLRenderer();
 				renderer.setPixelRatio( window.devicePixelRatio );
@@ -138,18 +141,35 @@
 				stats = new Stats();
 				container.appendChild( stats.dom );
 
-				//
+				controls = new THREE.OrbitControls( camera, renderer.domElement );
+				controls.enableDamping = true;
+				controls.dampingFactor = 0.25;
+				controls.enableZoom = true;
 
+				light = new THREE.DirectionalLight( 0xffffff );
+				light.position.set( 1, 1, 1 );
+				scene.add( light );
+				light = new THREE.DirectionalLight( 0x002288 );
+				light.position.set( -1, -1, -1 );
+				scene.add( light );
+				light = new THREE.AmbientLight( 0x222222 );
+				scene.add( light );
+				// document.addEventListener('mousedown', onMouseDown, false);
 				window.addEventListener( 'resize', onWindowResize, false );
-				document.addEventListener('click', function(event){
-			    var intersectObj = mouse.getIntersects( camera, scene.children, event)[0];
-			    if(window.console){ 
-			        // console.log(intersectObj);
-			    }
-			    else{
-			        alert(intersectObj);
-			    }
-});
+				// document.addEventListener('click', function(event){
+			 //    var intersectObj = mouse.getIntersects( camera, scene.children, event)[0];
+			 //        console.log(intersectObj);
+			 //    });
+
+
+
+
+				document.addEventListener('click', function (evt) {
+
+				  clickInfo.userHasClicked = true;
+				  clickInfo.x = evt.clientX;
+				  clickInfo.y = evt.clientY;
+				}, false);
 
 
 			}
@@ -166,38 +186,53 @@
 			//
 
 			function animate() {
-
 				requestAnimationFrame( animate );
-
-				render();
+				controls.update();
 				stats.update();
-
+				render();
 			}
 
-			var clock = new THREE.Clock();
 
 			function render() {
+				if(clickInfo.userHasClicked){		
+                    controls.enable = false;
+					var x = ( clickInfo.x / SCREEN_WIDTH ) * 2 - 1;
+					var y = -( clickInfo.y / SCREEN_HEIGHT ) * 2 + 1;
+					var vector = new THREE.Vector3( x, y, 1 );
+					raycaster.setFromCamera( vector, camera );
+					var intersects = raycaster.intersectObjects(scene.children, true);
+					if (intersects.length) {
+					  var target = intersects[0].object;
+					  // console.log(dae);
+					  if(target.parent.name){
+					  	console.log(target);
+					   target.material.color.setHex( Math.random() * 0xffffff );
+					   var toPrint = 'Conjunto '+target.parent.name.split('_')[1]+' Clickado.';
+					   document.getElementById('info').innerHTML = toPrint;
+					  }
+					 
+					}
+					clickInfo.userHasClicked = false;
+				}
 
-				var timer = Date.now() * 0.0005;
-
-				camera.position.x = Math.cos( timer ) * 10;
-				camera.position.y = 2;
-				camera.position.z = Math.sin( timer ) * 10;
-
-				camera.lookAt( scene.position );
-
-				particleLight.position.x = Math.sin( timer * 4 ) * 3009;
-				particleLight.position.y = Math.cos( timer * 5 ) * 4000;
-				particleLight.position.z = Math.cos( timer * 4 ) * 3009;
-
-				THREE.AnimationHandler.update( clock.getDelta() );
-
+				controls.enable = true;
 				renderer.render( scene, camera );
-
 			}
+
+
+
+
+
 
 			var mouse = {
 		    getIntersects: function( camera, sceneChildren, event ){
+		    	var toIntersect = [];
+		    	THREE.SceneUtils.traverse(dae, function (child) {
+				    if (child instanceof THREE.Mesh) {
+				        toIntersect.push(child);
+				    }
+				});
+				console.log(toIntersect);
 		        event = event || window.event;
 
 		        var mouseX = ( event.clientX / window.innerWidth ) * 2 - 1;
@@ -228,12 +263,15 @@
 
 
 
+
+
+
 		var setMaterial = function(node, material) {
-			console.log(node);
-		  node.material = material;
+			// console.log(node);
+		  node.material = new THREE.MeshBasicMaterial({color: 0x5A099E});
 		  if (node.children) {
 		    for (var i = 0; i < node.children.length; i++) {
-		      setMaterial(node.children[i], material);
+		      setMaterial(node.children[i], new THREE.MeshBasicMaterial({color: 0x5A099E}));
 		    }
 		  }
 		}
