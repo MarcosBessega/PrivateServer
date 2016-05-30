@@ -54,7 +54,6 @@
 
 			var loader = new THREE.ColladaLoader();
 			loader.options.convertUpAxis = true;
-			loader.options.centerGeometry = true;
 			loader.load( 'teste.dae', function ( collada ) {
 
 				dae = collada.scene;
@@ -145,7 +144,7 @@
 				document.addEventListener('click', function(event){
 			    var intersectObj = mouse.getIntersects( camera, scene.children, event)[0];
 			    if(window.console){ 
-			        console.log(intersectObj);
+			        // console.log(intersectObj);
 			    }
 			    else{
 			        alert(intersectObj);
@@ -223,6 +222,11 @@
 		        return intersects[0].point
 		    }
 		}
+
+
+
+
+
 
 		var setMaterial = function(node, material) {
 			console.log(node);
