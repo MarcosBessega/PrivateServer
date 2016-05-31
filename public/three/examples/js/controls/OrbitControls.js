@@ -29,6 +29,11 @@ THREE.OrbitControls = function ( object, domElement ) {
 	this.minDistance = 0;
 	this.maxDistance = Infinity;
 
+	this.maxXPan = Infinity;
+	this.minXPan = -Infinity;
+	this.maxYPan = Infinity;
+	this.minYPan = -Infinity;
+
 	// How far you can zoom in and out ( OrthographicCamera only )
 	this.minZoom = 0;
 	this.maxZoom = Infinity;
@@ -159,7 +164,11 @@ THREE.OrbitControls = function ( object, domElement ) {
 			spherical.radius = Math.max( scope.minDistance, Math.min( scope.maxDistance, spherical.radius ) );
 
 			// move target to panned location
-			scope.target.add( panOffset );
+			var newX = this.target.x + panOffset.x;
+			var newY = this.target.y + panOffset.y;
+			if (newX <= this.maxXPan && newX >= this.minXPan  && newY <= this.maxYPan && newY >= this.minYPan) {
+			    scope.target.add( panOffset );
+			}
 
 			offset.setFromSpherical( spherical );
 
